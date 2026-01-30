@@ -108,6 +108,12 @@ label {
   font-size: 0.95rem;
 }
 
+#ir-form label select,
+#ir-form label input,
+#ir-form label textarea {
+  width: 100%;
+}
+
 input,
 select,
 textarea {
