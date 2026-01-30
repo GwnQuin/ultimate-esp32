@@ -16,6 +16,8 @@ const saveRemoteButton = document.getElementById("save-remote");
 const exportRemotesButton = document.getElementById("export-remotes");
 const clearRemotesButton = document.getElementById("clear-remotes");
 const remoteList = document.getElementById("remote-list");
+const irEnabledToggle = document.getElementById("ir-enabled");
+const irForm = document.getElementById("ir-form");
 
 let firmwareCatalog = {};
 let port;
@@ -124,6 +126,18 @@ const updateRemoteList = () => {
       updateRemoteList();
     });
   });
+};
+
+const setIrEnabled = (enabled) => {
+  [remoteName, remoteProtocol, remoteFrequency, remoteCode].forEach((field) => {
+    field.disabled = !enabled;
+  });
+  [saveRemoteButton, exportRemotesButton, clearRemotesButton].forEach(
+    (button) => {
+      button.disabled = !enabled;
+    }
+  );
+  irForm.classList.toggle("disabled", !enabled);
 };
 
 const saveRemote = () => {
@@ -252,6 +266,7 @@ const disconnect = async () => {
 
 loadFirmwareCatalog();
 updateRemoteList();
+setIrEnabled(false);
 
 deviceSelect.addEventListener("change", updateBuildOptions);
 connectButton.addEventListener("click", connect);
@@ -261,3 +276,6 @@ disconnectButton.addEventListener("click", disconnect);
 saveRemoteButton.addEventListener("click", saveRemote);
 exportRemotesButton.addEventListener("click", exportRemotes);
 clearRemotesButton.addEventListener("click", clearRemotes);
+irEnabledToggle.addEventListener("change", (event) => {
+  setIrEnabled(event.target.checked);
+});

@@ -85,6 +85,22 @@ body {
   margin-bottom: 1.5rem;
 }
 
+.guide-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  margin-bottom: 1.5rem;
+}
+
+.guide-grid h3 {
+  margin-bottom: 0.5rem;
+}
+
+.guide-grid ol {
+  padding-left: 1.2rem;
+  color: var(--muted);
+}
+
 label {
   display: flex;
   flex-direction: column;
@@ -111,6 +127,15 @@ textarea {
   flex-wrap: wrap;
   gap: 0.75rem;
   margin-bottom: 1rem;
+}
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  color: var(--muted);
 }
 
 button {
@@ -177,6 +202,11 @@ button:disabled {
   color: var(--muted);
 }
 
+#ir-form.disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
 .footer {
   padding: 2rem 1.5rem;
   text-align: center;
@@ -187,4 +217,17 @@ button:disabled {
 .notice {
   color: var(--danger);
   font-weight: 600;
+}
+
+.notice-block {
+  border: 1px dashed rgba(88, 166, 255, 0.4);
+  background: rgba(88, 166, 255, 0.08);
+  border-radius: 12px;
+  padding: 1rem;
+  color: var(--muted);
+}
+
+.notice-block h3 {
+  color: var(--text);
+  margin-bottom: 0.5rem;
 }

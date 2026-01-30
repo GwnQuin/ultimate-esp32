@@ -11,10 +11,38 @@
       "flashOffset": "0x0"
     }
   ],
+  "ESP32 Marauder Mini": [
+    {
+      "name": "Marauder Mini (ESP32-C3)",
+      "url": "https://example.com/marauder/esp32-c3.bin",
+      "flashOffset": "0x0"
+    }
+  ],
   "ESP8266 Deauther": [
     {
       "name": "Spacehuhn Deauther v2.6.1",
       "url": "https://example.com/deauther/esp8266.bin",
+      "flashOffset": "0x0"
+    }
+  ],
+  "ESP32 Wardriving": [
+    {
+      "name": "ESP32 Wardriver (SD kaart build)",
+      "url": "https://example.com/wardriver/esp32.bin",
+      "flashOffset": "0x0"
+    }
+  ],
+  "ESP32 WiFi Phisher": [
+    {
+      "name": "ESP32 WiFi Phisher (Captive Portal)",
+      "url": "https://example.com/phisher/esp32.bin",
+      "flashOffset": "0x0"
+    }
+  ],
+  "ESP32 Evil Portal": [
+    {
+      "name": "Evil Portal (ESP32)",
+      "url": "https://example.com/evilportal/esp32.bin",
       "flashOffset": "0x0"
     }
   ],
