@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ultimate ESP Flasher & Remote Vault</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div>
+        <h1>Ultimate ESP Flasher & Remote Vault</h1>
+        <p>
+          Browser-based flasher voor ESP32/ESP8266 (Marauder, Deauther, CYD) +
+          een IR remote kluis zoals bij de Flipper Zero.
+        </p>
+        <div class="badges">
+          <span>WebSerial</span>
+          <span>esptool-js</span>
+          <span>IRremoteESP8266</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="card" id="flasher">
+        <h2>1) Flash firmware in je browser</h2>
+        <p>
+          Kies een device, verbind met de ESP via USB en flash de juiste
+          firmware. Je kan ook een eigen firmware URL toevoegen.
+        </p>
+
+        <div class="grid">
+          <label>
+            Device
+            <select id="device-select"></select>
+          </label>
+          <label>
+            Build
+            <select id="build-select"></select>
+          </label>
+          <label>
+            Custom firmware URL
+            <input id="custom-url" type="url" placeholder="https://.../firmware.bin" />
+          </label>
+        </div>
+
+        <div class="actions">
+          <button id="connect" class="primary">Verbinden</button>
+          <button id="flash" class="primary" disabled>Flash</button>
+          <button id="disconnect" disabled>Ontkoppelen</button>
+        </div>
+
+        <div class="status">
+          <div>Poort: <span id="port-status">niet verbonden</span></div>
+          <div>Chip: <span id="chip-status">-</span></div>
+          <div>Progress: <span id="progress">0%</span></div>
+        </div>
+
+        <details class="hint">
+          <summary>Firmware sources</summary>
+          <ul>
+            <li>ESP32 Marauder (meerdere boards)</li>
+            <li>ESP8266 Deauther (Spacehuhn)</li>
+            <li>CYD (Cheap Yellow Display) demo build</li>
+          </ul>
+          <p>
+            Voeg je eigen build toe door een URL te plakken. Zorg dat het een
+            directe .bin download is.
+          </p>
+        </details>
+      </section>
+
+      <section class="card" id="remote-vault">
+        <h2>2) IR Remote Vault (universal remote)</h2>
+        <p>
+          Sla werkende IR codes op om later opnieuw te flashen of te delen.
+          Gebruik de IRremoteESP8266 library in je firmware om deze codes af te
+          spelen.
+        </p>
+
+        <div class="grid">
+          <label>
+            Naam
+            <input id="remote-name" type="text" placeholder="TV Power" />
+          </label>
+          <label>
+            Protocol
+            <input id="remote-protocol" type="text" placeholder="NEC, Sony, RC5" />
+          </label>
+          <label>
+            Frequentie (kHz)
+            <input id="remote-frequency" type="number" min="30" max="60" value="38" />
+          </label>
+          <label>
+            Raw code / HEX
+            <textarea id="remote-code" rows="4" placeholder="0x20DF10EF of raw timings"></textarea>
+          </label>
+        </div>
+
+        <div class="actions">
+          <button id="save-remote" class="primary">Opslaan</button>
+          <button id="export-remotes">Exporteer JSON</button>
+          <button id="clear-remotes">Wis alles</button>
+        </div>
+
+        <div class="remotes">
+          <h3>Opgeslagen remotes</h3>
+          <ul id="remote-list"></ul>
+        </div>
+      </section>
+
+      <section class="card" id="notes">
+        <h2>3) Firmware integratie tips</h2>
+        <ul>
+          <li>
+            ESP32 Marauder: voeg IRremoteESP8266 toe om IR codes te versturen.
+          </li>
+          <li>
+            ESP8266 Deauther: patch de build om IR sturing te activeren (optioneel).
+          </li>
+          <li>
+            CYD: gebruik een web UI om gekozen remote presets te triggeren.
+          </li>
+        </ul>
+        <p>
+          Sla je remote data op in JSON en laad deze in je firmware om snel te
+          testen of een button werkt.
+        </p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Made for ESP32/ESP8266 community. Gebruik op eigen risico.</p>
+    </footer>
+
+    <script src="https://unpkg.com/esptool-js@0.4.5/dist/esptool-js.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
