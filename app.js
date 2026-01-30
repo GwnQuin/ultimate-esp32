@@ -12,9 +12,6 @@ const remoteName = document.getElementById("remote-name");
 const remoteProtocol = document.getElementById("remote-protocol");
 const remoteFrequency = document.getElementById("remote-frequency");
 const remoteCode = document.getElementById("remote-code");
-const deviceType = document.getElementById("device-type");
-const deviceBrand = document.getElementById("device-brand");
-const broadcastMode = document.getElementById("broadcast-mode");
 const saveRemoteButton = document.getElementById("save-remote");
 const exportRemotesButton = document.getElementById("export-remotes");
 const clearRemotesButton = document.getElementById("clear-remotes");
@@ -112,13 +109,9 @@ const updateRemoteList = () => {
     item.className = "remote-item";
     item.innerHTML = `
       <h4>${remote.name}</h4>
-      <span>Type: ${remote.deviceType || "Onbekend"} · Merk: ${
-  remote.brand || "Onbekend"
-}</span>
       <span>Protocol: ${remote.protocol || "Onbekend"}</span>
       <span>Freq: ${remote.frequency} kHz</span>
       <span>Code: ${remote.code}</span>
-      <span>Broadcast: ${remote.broadcast ? "Ja" : "Nee"}</span>
       <button data-index="${index}" class="remove-remote">Verwijder</button>
     `;
     remoteList.appendChild(item);
@@ -136,15 +129,7 @@ const updateRemoteList = () => {
 };
 
 const setIrEnabled = (enabled) => {
-  [
-    deviceType,
-    deviceBrand,
-    remoteName,
-    remoteProtocol,
-    remoteFrequency,
-    remoteCode,
-    broadcastMode,
-  ].forEach((field) => {
+  [remoteName, remoteProtocol, remoteFrequency, remoteCode].forEach((field) => {
     field.disabled = !enabled;
   });
   [saveRemoteButton, exportRemotesButton, clearRemotesButton].forEach(
@@ -166,22 +151,16 @@ const saveRemote = () => {
   const remotes = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
   remotes.unshift({
     name,
-    deviceType: deviceType.value,
-    brand: deviceBrand.value,
     protocol: remoteProtocol.value.trim(),
-    frequency: Number.parseInt(remoteFrequency.value, 10) || 33,
+    frequency: Number.parseInt(remoteFrequency.value, 10) || 38,
     code,
-    broadcast: broadcastMode.checked,
     createdAt: new Date().toISOString(),
   });
   localStorage.setItem(STORAGE_KEY, JSON.stringify(remotes));
 
-  deviceType.value = "tv";
-  deviceBrand.value = "";
   remoteName.value = "";
   remoteProtocol.value = "";
   remoteCode.value = "";
-  broadcastMode.checked = false;
 
   updateRemoteList();
 };

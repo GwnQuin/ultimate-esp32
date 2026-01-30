@@ -84,31 +84,8 @@
         </label>
 
         <div class="grid" id="ir-form">
-          <label>
-            Apparaat type
-            <select id="device-type">
-              <option value="tv">TV</option>
-              <option value="digibord">Digibord</option>
-              <option value="airco">Airco</option>
-              <option value="ventilator">Ventilator</option>
-              <option value="overig">Overig</option>
-            </select>
-          </label>
-          <label>
-            Merk
-            <select id="device-brand">
-              <option value="">Kies merk</option>
-              <option value="promethean">Promethean</option>
-              <option value="samsung">Samsung</option>
-              <option value="lg">LG</option>
-              <option value="sony">Sony</option>
-              <option value="philips">Philips</option>
-              <option value="panasonic">Panasonic</option>
-              <option value="daikin">Daikin</option>
-              <option value="mitsubishi">Mitsubishi</option>
-              <option value="overig">Overig</option>
-            </select>
-          </label>
+
+        <div class="grid">
           <label>
             Naam
             <input id="remote-name" type="text" placeholder="TV Power" />
@@ -119,18 +96,13 @@
           </label>
           <label>
             Frequentie (kHz)
-            <input id="remote-frequency" type="number" min="30" max="60" value="33" />
+            <input id="remote-frequency" type="number" min="30" max="60" value="38" />
           </label>
           <label>
             Raw code / HEX
             <textarea id="remote-code" rows="4" placeholder="0x20DF10EF of raw timings"></textarea>
           </label>
         </div>
-
-        <label class="toggle">
-          <input id="broadcast-mode" type="checkbox" />
-          Broadcast / spam mode (probeer meerdere codes)
-        </label>
 
         <div class="actions">
           <button id="save-remote" class="primary">Opslaan</button>
