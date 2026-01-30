@@ -1,0 +1,28 @@
+{
+  "ESP32 Marauder": [
+    {
+      "name": "Marauder v0.13.8 (ESP32-WROOM)",
+      "url": "https://example.com/marauder/esp32-wroom.bin",
+      "flashOffset": "0x0"
+    },
+    {
+      "name": "Marauder v0.13.8 (ESP32-S3)",
+      "url": "https://example.com/marauder/esp32-s3.bin",
+      "flashOffset": "0x0"
+    }
+  ],
+  "ESP8266 Deauther": [
+    {
+      "name": "Spacehuhn Deauther v2.6.1",
+      "url": "https://example.com/deauther/esp8266.bin",
+      "flashOffset": "0x0"
+    }
+  ],
+  "CYD (Cheap Yellow Display)": [
+    {
+      "name": "CYD demo build",
+      "url": "https://example.com/cyd/cyd-demo.bin",
+      "flashOffset": "0x0"
+    }
+  ]
+}
